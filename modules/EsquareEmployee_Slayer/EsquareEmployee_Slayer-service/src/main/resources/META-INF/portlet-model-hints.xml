@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="EsquareEmployee_Slayer.model.Employees">
+		<field name="uuid" type="String" />
+		<field name="employeeId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="employeeName" type="String" />
+		<field name="employeeMobileNumber" type="String" />
+		<field name="employeeDesignation" type="String" />
+		<field name="employeephoto" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+</model-hints>

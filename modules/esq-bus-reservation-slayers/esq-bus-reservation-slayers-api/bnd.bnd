@@ -1,0 +1,10 @@
+Bundle-Name: esq-bus-reservation-slayers-api
+Bundle-SymbolicName: com.esq.bus.reservation.slayers.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.esq.bus.reservation.slayers.exception,\
+	com.esq.bus.reservation.slayers.model,\
+	com.esq.bus.reservation.slayers.service,\
+	com.esq.bus.reservation.slayers.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../esq-bus-reservation-slayers-service/service.xml

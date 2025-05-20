@@ -1,0 +1,4 @@
+Bundle-Name: user_bus_reservation
+Bundle-SymbolicName: com.user.bus.reservation
+Bundle-Version: 1.0.0
+Export-Package: com.user.bus.reservation.constants

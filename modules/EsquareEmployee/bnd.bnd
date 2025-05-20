@@ -1,0 +1,4 @@
+Bundle-Name: EsquareEmployee
+Bundle-SymbolicName: EsquareEmployee
+Bundle-Version: 1.0.0
+Export-Package: EsquareEmployee.constants

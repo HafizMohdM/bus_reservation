@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="com.esq.bus.reservation.slayers.model.AdminSetting" />
+	<import class="com.esq.bus.reservation.slayers.model.AuditLog" />
+	<import class="com.esq.bus.reservation.slayers.model.Booking" />
+	<import class="com.esq.bus.reservation.slayers.model.Bus" />
+	<import class="com.esq.bus.reservation.slayers.model.BusUser" />
+	<import class="com.esq.bus.reservation.slayers.model.Discount" />
+	<import class="com.esq.bus.reservation.slayers.model.Driver" />
+	<import class="com.esq.bus.reservation.slayers.model.DriverLog" />
+	<import class="com.esq.bus.reservation.slayers.model.Feedback" />
+	<import class="com.esq.bus.reservation.slayers.model.Location" />
+	<import class="com.esq.bus.reservation.slayers.model.Notification" />
+	<import class="com.esq.bus.reservation.slayers.model.Passenger" />
+	<import class="com.esq.bus.reservation.slayers.model.Payment" />
+	<import class="com.esq.bus.reservation.slayers.model.RefundRequest" />
+	<import class="com.esq.bus.reservation.slayers.model.Route" />
+	<import class="com.esq.bus.reservation.slayers.model.Seat" />
+	<import class="com.esq.bus.reservation.slayers.model.SupportTicket" />
+	<import class="com.esq.bus.reservation.slayers.model.Ticket" />
+	<import class="com.esq.bus.reservation.slayers.model.TransactionLog" />
+	<import class="com.esq.bus.reservation.slayers.model.TravelSchedule" />
+	<import class="com.esq.bus.reservation.slayers.model.UserRole" />
+	<class name="com.esq.bus.reservation.slayers.model.impl.AdminSettingImpl" table="BOOKRESERVATION_AdminSetting">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="settingId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="key_" name="key" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="value" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.AuditLogImpl" table="BOOKRESERVATION_AuditLog">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="auditId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="entityName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="entityId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="action" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="actionDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.BookingImpl" table="BOOKRESERVATION_Booking">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="bookingId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="scheduleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="passengerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="numberOfSeats" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="fareAmount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="totalAmount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="dateOfBooking" type="org.hibernate.type.TimestampType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="bookingStatus" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.BusImpl" table="BOOKRESERVATION_Bus">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="busId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="busNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="busPlateNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="busType" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="capacity" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="image1" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="image2" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="image3" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="image4" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="image5" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.BusUserImpl" table="BOOKRESERVATION_BusUser">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="fullName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="contactNo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="emailAddress" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="username" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userpassword" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="accountCategory" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="accountStatus" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.DiscountImpl" table="BOOKRESERVATION_Discount">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="discountId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="code_" name="code" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="percentage" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="validFrom" type="org.hibernate.type.TimestampType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="validTo" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.DriverImpl" table="BOOKRESERVATION_Driver">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="driverId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="driverName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="driverContact" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.DriverLogImpl" table="BOOKRESERVATION_DriverLog">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="logId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="driverId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="tripDate" type="org.hibernate.type.TimestampType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="scheduleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.FeedbackImpl" table="BOOKRESERVATION_Feedback">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="feedbackId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="passengerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="bookingId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="rating" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="comment_" name="comment" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.LocationImpl" table="BOOKRESERVATION_Location">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="locationId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="city" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="station" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.NotificationImpl" table="BOOKRESERVATION_Notification">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="notificationId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="message" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="type_" name="type" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="sentDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.PassengerImpl" table="BOOKRESERVATION_Passenger">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="passengerId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="passengerName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="passengerContact" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="passengerEmail" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="username" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="password_" name="password" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="accountStatus" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.PaymentImpl" table="BOOKRESERVATION_Payment">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="paymentId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="bookingId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="amountPaid" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="paymentDate" type="org.hibernate.type.TimestampType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.RefundRequestImpl" table="BOOKRESERVATION_RefundRequest">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="requestId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="bookingId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="reason" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="requestDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.RouteImpl" table="BOOKRESERVATION_Route">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="routeId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="startLocationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="endLocationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="distanceKm" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.SeatImpl" table="BOOKRESERVATION_Seat">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="seatId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="scheduleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="seatNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="isBooked" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.SupportTicketImpl" table="BOOKRESERVATION_SupportTicket">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="supportTicketId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="subject" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="message" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="createdDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.TicketImpl" table="BOOKRESERVATION_Ticket">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="ticketId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="bookingId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="qrCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="issuedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.TransactionLogImpl" table="BOOKRESERVATION_TransactionLog">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="logId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="action" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="timestamp" type="org.hibernate.type.TimestampType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="bookingId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.TravelScheduleImpl" table="BOOKRESERVATION_TravelSchedule">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="scheduleId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="busId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="driverId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="startingPoint" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="destination" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="scheduleDate" type="org.hibernate.type.TimestampType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="departureTime" type="org.hibernate.type.TimestampType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="estimatedArrivalTime" type="org.hibernate.type.TimestampType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="fareAmount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.esq.bus.reservation.slayers.model.impl.UserRoleImpl" table="BOOKRESERVATION_UserRole">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userRoleId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="roleName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.esq.bus.reservation.slayers">
+	<namespace>BOOKRESERVATION</namespace>
+	<!-- tbluser -->
+	<!-- User Table -->
+	<entity name="BusUser" local-service="true" remote-service="false">
+		<column name="userId" type="long" primary="true" />
+		<column name="fullName" type="String" />
+		<column name="contactNo" type="String" />
+		<column name="emailAddress" type="String" />
+		<column name="username" type="String" />
+		<column name="userpassword" type="String"/>
+		<column name="accountCategory" type="int" />
+		<column name="accountStatus" type="int" />
+
+		<finder return-type="Collection" name="emailAddress">
+			<finder-column name="emailAddress" />
+		</finder>
+
+		<finder return-type="Collection" name="username">
+			<finder-column name="username" />
+		</finder>
+	</entity>
+
+	<!-- Passenger Table -->
+	<entity name="Passenger" local-service="true"
+		remote-service="false">
+		<column name="passengerId" type="long" primary="true" />
+		<column name="passengerName" type="String" />
+		<column name="passengerContact" type="String" />
+		<column name="passengerEmail" type="String" />
+		<column name="username" type="String" />
+		<column name="password" type="String" />
+		<column name="accountStatus" type="int" />
+		<column name="userId" type="long" />
+
+		<finder return-type="Collection" name="passengerEmail">
+			<finder-column name="passengerEmail" />
+		</finder>
+
+		<finder return-type="Collection" name="userId">
+			<finder-column name="userId" />
+		</finder>
+	</entity>
+
+	<!-- Bus Table -->
+	<entity name="Bus" local-service="true" remote-service="false">
+		<column name="busId" type="long" primary="true" />
+		<column name="busNumber" type="String" />
+		<column name="busPlateNumber" type="String" />
+		<column name="busType" type="int" />
+		<column name="capacity" type="int" />
+		<column name="userId" type="long" />
+		<column name="image1" type="String" />
+        <column name="image2" type="String" />
+        <column name="image3" type="String" />
+        <column name="image4" type="String" />
+        <column name="image5" type="String" />
+
+		<finder return-type="Collection" name="userId">
+			<finder-column name="userId" />
+		</finder>
+	</entity>
+
+	<!-- Driver Table -->
+	<entity name="Driver" local-service="true"
+		remote-service="false">
+		<column name="driverId" type="long" primary="true" />
+		<column name="driverName" type="String" />
+		<column name="driverContact" type="String" />
+		<column name="userId" type="long" />
+
+		<finder return-type="Collection" name="userId">
+			<finder-column name="userId" />
+		</finder>
+	</entity>
+
+	<!-- TravelSchedule Table -->
+	<entity name="TravelSchedule" local-service="true"
+		remote-service="false">
+		<column name="scheduleId" type="long" primary="true" />
+		<column name="busId" type="long" />
+		<column name="driverId" type="long" />
+		<column name="startingPoint" type="String" />
+		<column name="destination" type="String" />
+		<column name="scheduleDate" type="Date" />
+		<column name="departureTime" type="Date" />
+		<column name="estimatedArrivalTime" type="Date" />
+		<column name="fareAmount" type="double" />
+		<column name="remarks" type="String" />
+		<column name="userId" type="long" />
+
+		<finder return-type="Collection" name="busId">
+			<finder-column name="busId" />
+		</finder>
+	</entity>
+
+	<!-- Booking Table -->
+	<entity name="Booking" local-service="true"
+		remote-service="false">
+		<column name="bookingId" type="long" primary="true" />
+		<column name="scheduleId" type="long" />
+		<column name="passengerId" type="long" />
+		<column name="numberOfSeats" type="int" />
+		<column name="fareAmount" type="double" />
+		<column name="totalAmount" type="double" />
+		<column name="dateOfBooking" type="Date" />
+		<column name="bookingStatus" type="int" />
+		<column name="userId" type="long" />
+
+		<finder return-type="Collection" name="scheduleId">
+			<finder-column name="scheduleId" />
+		</finder>
+
+		<finder return-type="Collection" name="passengerId">
+			<finder-column name="passengerId" />
+		</finder>
+	</entity>
+
+	<!-- Payment Table -->
+	<entity name="Payment" local-service="true"
+		remote-service="false">
+		<column name="paymentId" type="long" primary="true" />
+		<column name="bookingId" type="long" />
+		<column name="amountPaid" type="double" />
+		<column name="paymentDate" type="Date" />
+		<column name="userId" type="long" />
+
+		<finder return-type="Collection" name="bookingId">
+			<finder-column name="bookingId" />
+		</finder>
+	</entity>
+
+	<!-- Location Table -->
+	<entity name="Location" local-service="true"
+		remote-service="false">
+		<column name="locationId" type="long" primary="true" />
+		<column name="city" type="String" />
+		<column name="station" type="String" />
+	</entity>
+
+	<!-- Route Table -->
+	<entity name="Route" local-service="true" remote-service="false">
+		<column name="routeId" type="long" primary="true" />
+		<column name="startLocationId" type="long" />
+		<column name="endLocationId" type="long" />
+		<column name="distanceKm" type="double" />
+	</entity>
+
+	<!-- Seat Table -->
+	<entity name="Seat" local-service="true" remote-service="false">
+		<column name="seatId" type="long" primary="true" />
+		<column name="scheduleId" type="long" />
+		<column name="seatNumber" type="String" />
+		<column name="isBooked" type="boolean" />
+
+		<finder return-type="Collection" name="scheduleId">
+			<finder-column name="scheduleId" />
+		</finder>
+	</entity>
+
+	<!-- Feedback Table -->
+	<entity name="Feedback" local-service="true"
+		remote-service="false">
+		<column name="feedbackId" type="long" primary="true" />
+		<column name="passengerId" type="long" />
+		<column name="bookingId" type="long" />
+		<column name="rating" type="int" />
+		<column name="comment" type="String" />
+	</entity>
+
+	<!-- Discount Table -->
+	<entity name="Discount" local-service="true"
+		remote-service="false">
+		<column name="discountId" type="long" primary="true" />
+		<column name="code" type="String" />
+		<column name="percentage" type="double" />
+		<column name="validFrom" type="Date" />
+		<column name="validTo" type="Date" />
+
+		<finder return-type="Collection" name="code">
+			<finder-column name="code" />
+		</finder>
+	</entity>
+
+	<!-- Notification Table -->
+	<entity name="Notification" local-service="true"
+		remote-service="false">
+		<column name="notificationId" type="long" primary="true" />
+		<column name="userId" type="long" />
+		<column name="message" type="String" />
+		<column name="type" type="String" />
+		<column name="sentDate" type="Date" />
+	</entity>
+
+	<!-- TransactionLog Table -->
+	<entity name="TransactionLog" local-service="true"
+		remote-service="false">
+		<column name="logId" type="long" primary="true" />
+		<column name="action" type="String" />
+		<column name="timestamp" type="Date" />
+		<column name="userId" type="long" />
+		<column name="bookingId" type="long" />
+	</entity>
+
+	<!-- AuditLog Table -->
+	<entity name="AuditLog" local-service="true"
+		remote-service="false">
+		<column name="auditId" type="long" primary="true" />
+		<column name="entityName" type="String" />
+		<column name="entityId" type="long" />
+		<column name="action" type="String" />
+		<column name="userId" type="long" />
+		<column name="actionDate" type="Date" />
+
+		<finder return-type="Collection" name="actionDate">
+			<finder-column name="actionDate" />
+		</finder>
+	</entity>
+
+	<!-- AdminSetting Table -->
+	<entity name="AdminSetting" local-service="true"
+		remote-service="false">
+		<column name="settingId" type="long" primary="true" />
+		<column name="key" type="String" />
+		<column name="value" type="String" />
+	</entity>
+
+	<!-- UserRole Table -->
+	<entity name="UserRole" local-service="true"
+		remote-service="false">
+		<column name="userRoleId" type="long" primary="true" />
+		<column name="userId" type="long" />
+		<column name="roleName" type="String" />
+	</entity>
+
+	<!-- DriverLog Table -->
+	<entity name="DriverLog" local-service="true"
+		remote-service="false">
+		<column name="logId" type="long" primary="true" />
+		<column name="driverId" type="long" />
+		<column name="tripDate" type="Date" />
+		<column name="scheduleId" type="long" />
+	</entity>
+
+	<!-- Ticket Table -->
+	<entity name="Ticket" local-service="true"
+		remote-service="false">
+		<column name="ticketId" type="long" primary="true" />
+		<column name="bookingId" type="long" />
+		<column name="qrCode" type="String" />
+		<column name="issuedDate" type="Date" />
+	</entity>
+
+	<!-- RefundRequest Table -->
+	<entity name="RefundRequest" local-service="true"
+		remote-service="false">
+		<column name="requestId" type="long" primary="true" />
+		<column name="bookingId" type="long" />
+		<column name="reason" type="String" />
+		<column name="status" type="String" />
+		<column name="requestDate" type="Date" />
+	</entity>
+
+	<!-- SupportTicket Table -->
+	<entity name="SupportTicket" local-service="true"
+		remote-service="false">
+		<column name="supportTicketId" type="long" primary="true" />
+		<column name="userId" type="long" />
+		<column name="subject" type="String" />
+		<column name="message" type="String" />
+		<column name="status" type="String" />
+		<column name="createdDate" type="Date" />
+	</entity>
+
+</service-builder>

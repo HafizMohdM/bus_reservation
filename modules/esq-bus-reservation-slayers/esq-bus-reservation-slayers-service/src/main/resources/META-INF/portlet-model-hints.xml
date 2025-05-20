@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.esq.bus.reservation.slayers.model.AdminSetting">
+		<field name="settingId" type="long" />
+		<field name="key" type="String" />
+		<field name="value" type="String" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.AuditLog">
+		<field name="auditId" type="long" />
+		<field name="entityName" type="String" />
+		<field name="entityId" type="long" />
+		<field name="action" type="String" />
+		<field name="userId" type="long" />
+		<field name="actionDate" type="Date" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Booking">
+		<field name="bookingId" type="long" />
+		<field name="scheduleId" type="long" />
+		<field name="passengerId" type="long" />
+		<field name="numberOfSeats" type="int" />
+		<field name="fareAmount" type="double" />
+		<field name="totalAmount" type="double" />
+		<field name="dateOfBooking" type="Date" />
+		<field name="bookingStatus" type="int" />
+		<field name="userId" type="long" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Bus">
+		<field name="busId" type="long" />
+		<field name="busNumber" type="String" />
+		<field name="busPlateNumber" type="String" />
+		<field name="busType" type="int" />
+		<field name="capacity" type="int" />
+		<field name="userId" type="long" />
+		<field name="image1" type="String" />
+		<field name="image2" type="String" />
+		<field name="image3" type="String" />
+		<field name="image4" type="String" />
+		<field name="image5" type="String" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.BusUser">
+		<field name="userId" type="long" />
+		<field name="fullName" type="String" />
+		<field name="contactNo" type="String" />
+		<field name="emailAddress" type="String" />
+		<field name="username" type="String" />
+		<field name="userpassword" type="String" />
+		<field name="accountCategory" type="int" />
+		<field name="accountStatus" type="int" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Discount">
+		<field name="discountId" type="long" />
+		<field name="code" type="String" />
+		<field name="percentage" type="double" />
+		<field name="validFrom" type="Date" />
+		<field name="validTo" type="Date" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Driver">
+		<field name="driverId" type="long" />
+		<field name="driverName" type="String" />
+		<field name="driverContact" type="String" />
+		<field name="userId" type="long" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.DriverLog">
+		<field name="logId" type="long" />
+		<field name="driverId" type="long" />
+		<field name="tripDate" type="Date" />
+		<field name="scheduleId" type="long" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Feedback">
+		<field name="feedbackId" type="long" />
+		<field name="passengerId" type="long" />
+		<field name="bookingId" type="long" />
+		<field name="rating" type="int" />
+		<field name="comment" type="String" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Location">
+		<field name="locationId" type="long" />
+		<field name="city" type="String" />
+		<field name="station" type="String" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Notification">
+		<field name="notificationId" type="long" />
+		<field name="userId" type="long" />
+		<field name="message" type="String" />
+		<field name="type" type="String" />
+		<field name="sentDate" type="Date" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Passenger">
+		<field name="passengerId" type="long" />
+		<field name="passengerName" type="String" />
+		<field name="passengerContact" type="String" />
+		<field name="passengerEmail" type="String" />
+		<field name="username" type="String" />
+		<field name="password" type="String" />
+		<field name="accountStatus" type="int" />
+		<field name="userId" type="long" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Payment">
+		<field name="paymentId" type="long" />
+		<field name="bookingId" type="long" />
+		<field name="amountPaid" type="double" />
+		<field name="paymentDate" type="Date" />
+		<field name="userId" type="long" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.RefundRequest">
+		<field name="requestId" type="long" />
+		<field name="bookingId" type="long" />
+		<field name="reason" type="String" />
+		<field name="status" type="String" />
+		<field name="requestDate" type="Date" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Route">
+		<field name="routeId" type="long" />
+		<field name="startLocationId" type="long" />
+		<field name="endLocationId" type="long" />
+		<field name="distanceKm" type="double" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Seat">
+		<field name="seatId" type="long" />
+		<field name="scheduleId" type="long" />
+		<field name="seatNumber" type="String" />
+		<field name="isBooked" type="boolean" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.SupportTicket">
+		<field name="supportTicketId" type="long" />
+		<field name="userId" type="long" />
+		<field name="subject" type="String" />
+		<field name="message" type="String" />
+		<field name="status" type="String" />
+		<field name="createdDate" type="Date" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.Ticket">
+		<field name="ticketId" type="long" />
+		<field name="bookingId" type="long" />
+		<field name="qrCode" type="String" />
+		<field name="issuedDate" type="Date" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.TransactionLog">
+		<field name="logId" type="long" />
+		<field name="action" type="String" />
+		<field name="timestamp" type="Date" />
+		<field name="userId" type="long" />
+		<field name="bookingId" type="long" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.TravelSchedule">
+		<field name="scheduleId" type="long" />
+		<field name="busId" type="long" />
+		<field name="driverId" type="long" />
+		<field name="startingPoint" type="String" />
+		<field name="destination" type="String" />
+		<field name="scheduleDate" type="Date" />
+		<field name="departureTime" type="Date" />
+		<field name="estimatedArrivalTime" type="Date" />
+		<field name="fareAmount" type="double" />
+		<field name="remarks" type="String" />
+		<field name="userId" type="long" />
+	</model>
+	<model name="com.esq.bus.reservation.slayers.model.UserRole">
+		<field name="userRoleId" type="long" />
+		<field name="userId" type="long" />
+		<field name="roleName" type="String" />
+	</model>
+</model-hints>

@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:esq-bus-reservation-slayers:esq-bus-reservation-slayers-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../esq-bus-reservation-slayers-api/src/main/java"
+}
+
+group = "com.esq.bus.reservation.slayers"

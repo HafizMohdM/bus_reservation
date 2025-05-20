@@ -1,0 +1,10 @@
+Bundle-Name: EsquareEmployee_Slayer-api
+Bundle-SymbolicName: EsquareEmployee_Slayer.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	EsquareEmployee_Slayer.exception,\
+	EsquareEmployee_Slayer.model,\
+	EsquareEmployee_Slayer.service,\
+	EsquareEmployee_Slayer.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../EsquareEmployee_Slayer-service/service.xml
